@@ -1,0 +1,2 @@
+rootProject.name = "LaSauce"
+include ':app'
