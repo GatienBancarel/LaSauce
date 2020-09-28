@@ -1,6 +1,8 @@
 package com.gbancarel.lasauce
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Display
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
@@ -8,6 +10,7 @@ import androidx.compose.foundation.layout.ColumnScope.weight
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,6 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gbancarel.lasauce.ui.LaSauceTheme
 import com.gbancarel.lasauce.ui.typography
+import kotlinx.coroutines.Runnable
+import kotlin.random.Random
 
 class RulePage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +35,7 @@ class RulePage : AppCompatActivity() {
                 ) {
                     Column (
                             modifier = Modifier.fillMaxSize(),
-                            horizontalGravity = Alignment.CenterHorizontally
+                            horizontalGravity = Alignment.End
                     ) {
                         Row (
                                 modifier = Modifier.weight(1f)
@@ -41,7 +46,7 @@ class RulePage : AppCompatActivity() {
                         Row (
                                 modifier = Modifier.weight(4f)
                         ) {
-
+                            DisplayRule(ruleList[Random.nextInt(0, 1)])
                         }
                         Row (
                                 modifier = Modifier.weight(4f)
@@ -58,6 +63,14 @@ class RulePage : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private val ruleList = listOf("La première personne à poser un doigt sur le front de son voisin de droite distribue 2 gorgées", "Aboie comme Marex")
+
+    @Composable
+    fun DisplayRule(ruleToD: String) {
+        Spacer(modifier= Modifier.preferredHeight((20.dp)))
+        Text(text = ruleToD)
     }
 
     @Composable
@@ -121,7 +134,7 @@ class RulePage : AppCompatActivity() {
     fun ButtonHomePage() {
         Spacer(modifier = Modifier.preferredHeight(20.dp))
         Button(
-                onClick = {},
+                onClick = {startActivity(Intent(this@RulePage,MainActivity::class.java))},
                 modifier = Modifier.fillMaxHeight().weight(1f)
         ) {
             Text(

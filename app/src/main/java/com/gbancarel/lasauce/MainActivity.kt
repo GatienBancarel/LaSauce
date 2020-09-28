@@ -1,5 +1,6 @@
 package com.gbancarel.lasauce
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Text
@@ -71,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     fun ButtonNewGame() {
         Spacer(modifier = Modifier.preferredHeight(20.dp))
         Button(
-                onClick = {},
+                onClick = {startActivity(Intent(this@MainActivity,RulePage::class.java))},
                 modifier = Modifier.preferredWidth(250.dp).preferredHeight(100.dp)
         ) {
             Text(
